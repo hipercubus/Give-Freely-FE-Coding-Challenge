@@ -1,4 +1,15 @@
-.button {
+#plasmo-shadow-container {
+  height: 100%;
+  width: 48px;
+}
+
+#plasmo-inline {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
+button {
   all: unset;
   padding: 8px;
   border-radius: 50%;
@@ -8,33 +19,30 @@
   cursor: pointer;
 }
 
-.button:hover {
+button:hover {
   background-color: rgba(218, 220, 224, 0.5);
 }
 
 .menu {
   position: absolute;
-  /* background-color: #eaf6f3; */
-  background: linear-gradient(45deg, rgb(177 232 179), white);
-  /* width: 100px; */
-  height: fit-content;
-  top: 50px;
-  right: 10px;
+  background: linear-gradient(45deg, #b1e8b3, #ffffff);
+  top: 45px;
+  right: 0px;
   padding: 10px;
-  color: black;
+  color: #000000;
   border-radius: 5px;
   border: 1px solid #b1e8b3;
   box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
-  /* transition: all 2s ease-in; */
   white-space: nowrap;
 }
+
 .bell {
   height: 100%;
 }
 
 .badge {
-  background-color: red;
-  color: white;
+  background-color: #f00;
+  color: #fff;
   font-size: 10px;
   font-weight: 600;
   padding-bottom: 1px;
@@ -46,9 +54,14 @@
   align-items: center;
   position: absolute;
   bottom: 4px;
-  right: 10px;
+  right: 4px;
 }
 
 .brand {
   font-weight: 700;
+}
+
+.message {
+  margin-top: 4px;
+  color: #333;
 }
