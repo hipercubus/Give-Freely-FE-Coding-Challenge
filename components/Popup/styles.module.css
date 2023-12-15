@@ -1,0 +1,57 @@
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+}
+
+button {
+  all: unset;
+  padding: 8px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.5);
+  border: 2px solid #b1e8b3;
+  cursor: pointer;
+  transition: background-color 400ms ease-out;
+  text-align: center;
+}
+
+button:hover {
+  background: rgba(255, 255, 255, 1);
+}
+
+a {
+  color: #666;
+}
+
+a:hover {
+  color: #333;
+}
+
+.container {
+  width: 240px;
+  height: 240px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: linear-gradient(45deg, #b1e8b3, #fff);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  gap: 6px;
+}
+
+.name {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.messages {
+  margin-top: 10px;
+  color: #333;
+  font-weight: 600;
+  overflow-y: auto;
+  height: 65px;
+}

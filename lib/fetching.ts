@@ -13,5 +13,5 @@ export const getWebsites = async () => {
     headers: headers
   })
   const jsonResponse = await response.json()
-  return jsonResponse.record
+  return jsonResponse.record as WebsitesResponse
 }
