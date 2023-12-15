@@ -4,24 +4,16 @@ import { getWebsitesFromBG } from "~lib/background"
 import { getRandomItem } from "~lib/utils"
 
 export const useNotifications = () => {
-  const [showMenu, setShowMenu] = useState(false)
-  const [randomName, setRandomName] = useState()
-  const [randomMessage, setRandomMessage] = useState()
+  const [showMenu, setShowMenu] = useState<boolean>(false)
+  const [randomName, setRandomName] = useState<string>()
+  const [randomMessage, setRandomMessage] = useState<string>()
   const handleMenu = () => setShowMenu(!showMenu)
 
   useEffect(() => {
-    // console.log(">>> ", "sending ping")
     getWebsitesFromBG().then((resp) => {
-      // console.log("🔎  >> getWebsitesFromBG  >> resp:", resp)
-      const randomBrand = getRandomItem(resp.websites)
-
-      // console.log(
-      //   "🔎  >> getWebsitesFromBG  >> randomBrand.name:",
-      //   randomBrand.name
-      // )
+      const randomBrand: Website = getRandomItem<Website>(resp.websites)
+      const randomMessage = getRandomItem<string>(randomBrand.messages)
       setRandomName(randomBrand.name)
-      const randomMessage = getRandomItem(randomBrand.messages)
-      // console.log("🔎  >> getWebsitesFromBG  >> message:", randomMessage)
       setRandomMessage(randomMessage)
     })
   }, [])

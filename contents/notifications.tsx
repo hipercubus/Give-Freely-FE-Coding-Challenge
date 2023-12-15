@@ -30,7 +30,7 @@ export const mountShadowHost: PlasmoMountShadowHost = ({
   anchor.element.prepend(shadowHost)
 }
 
-const NotificationContent: FC<PlasmoCSUIProps> = ({ anchor }) => {
+const NotificationContent: FC<PlasmoCSUIProps> = () => {
   return <Notifications />
 }
 

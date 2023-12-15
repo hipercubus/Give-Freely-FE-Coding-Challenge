@@ -1,2 +1,2 @@
-export const getRandomItem = (items) =>
-  items[Math.floor(Math.random() * items.length)]
+export const getRandomItem = <T>(items: T[]): T | undefined =>
+  items[Math.floor(Math.random() * items.length)] ?? undefined
