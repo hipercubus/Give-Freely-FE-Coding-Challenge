@@ -5,15 +5,14 @@ import * as styles from "~css/notifications.module.css"
 
 type NotificationIconProps = {
   onClick: () => void
+  matches?: number
 }
 
-const NotificationIcon: FC<NotificationIconProps> = ({ onClick }) => {
-  const sitesFound = 1
-
+const NotificationIcon: FC<NotificationIconProps> = ({ onClick, matches }) => {
   return (
     <button onClick={onClick}>
       <img src={bell} className={styles.bell} alt="notification icon" />
-      <div className={styles.badge}>{sitesFound}</div>
+      {matches && <div className={styles.badge}>{matches}</div>}
     </button>
   )
 }

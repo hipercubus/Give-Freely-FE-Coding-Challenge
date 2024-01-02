@@ -11,3 +11,9 @@ type Website = {
 type WebsitesResponse = {
   websites: Website[]
 }
+
+type MatchURL = {
+  url: string
+  name: string
+  message: string
+}

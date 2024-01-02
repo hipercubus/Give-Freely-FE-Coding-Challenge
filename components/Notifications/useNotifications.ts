@@ -1,22 +1,43 @@
 import { useEffect, useState } from "react"
 
 import { getWebsitesFromBG } from "~lib/background"
+import { getURLMatches } from "~lib/storage"
 import { getRandomItem } from "~lib/utils"
 
 export const useNotifications = () => {
   const [showMenu, setShowMenu] = useState<boolean>(false)
-  const [randomName, setRandomName] = useState<string>()
-  const [randomMessage, setRandomMessage] = useState<string>()
+  const [matchesList, setMatchesList] = useState<MatchURL[]>([])
   const handleMenu = () => setShowMenu(!showMenu)
 
   useEffect(() => {
-    getWebsitesFromBG().then((resp) => {
-      const randomBrand: Website = getRandomItem<Website>(resp.websites)
-      const randomMessage = getRandomItem<string>(randomBrand.messages)
-      setRandomName(randomBrand.name)
-      setRandomMessage(randomMessage)
+    Promise.all([getURLMatches(), getWebsitesFromBG()]).then((resp) => {
+      const [urlMatches, respBG] = resp
+
+      const list: MatchURL[] = urlMatches.reduce(
+        (prev: MatchURL[], urlMatch: string) => {
+          const isAlreadyInList = prev.some((match) =>
+            urlMatch.includes(match.url)
+          )
+          if (isAlreadyInList) return prev
+
+          const website = respBG.websites.find((website) =>
+            urlMatch.includes(website.url)
+          )
+          const randomMessage = getRandomItem<string>(website.messages)
+          return [
+            ...prev,
+            {
+              url: website.url,
+              name: website.name,
+              message: randomMessage
+            }
+          ]
+        },
+        []
+      )
+      setMatchesList(list)
     })
   }, [])
 
-  return { showMenu, handleMenu, randomName, randomMessage }
+  return { showMenu, handleMenu, matchesList }
 }
