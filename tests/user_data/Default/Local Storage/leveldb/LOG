@@ -1,0 +1,5 @@
+2024/01/03-20:06:46.279 3a03 Reusing MANIFEST /Users/christianmotta/hipercubus/code_challenges/Give-Freely-FE-Coding-Challenge/tests/user_data/Default/Local Storage/leveldb/MANIFEST-000001
+2024/01/03-20:06:46.282 3a03 Recovering log #4
+2024/01/03-20:06:46.283 3a03 Level-0 table #6: started
+2024/01/03-20:06:46.304 3a03 Level-0 table #6: 66618 bytes OK
+2024/01/03-20:06:46.347 3a03 Delete type=0 #4

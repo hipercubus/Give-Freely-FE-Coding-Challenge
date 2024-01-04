@@ -13,5 +13,6 @@ export const getWebsites = async () => {
     headers: headers
   })
   const jsonResponse = await response.json()
+  console.log("🔎  >> getWebsites  >> jsonResponse:", jsonResponse)
   return jsonResponse.record as WebsitesResponse
 }

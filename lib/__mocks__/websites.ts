@@ -7,7 +7,11 @@ export const WEBSITES_MOCK = {
         "Thank you",
         "Please shop on our site",
         "sometihng else tripadvisor"
-      ]
+      ],
+      redirect: {
+        url: "https://www.tripadvisor.com/Trips",
+        message: "Time to plan a trip!"
+      }
     },
     {
       name: "Uber",

@@ -3,11 +3,16 @@ import { useEffect, useState } from "react"
 import { getWebsitesFromBG } from "~lib/background"
 import { getRandomItem } from "~lib/utils"
 
-export const useBanner = () => {
-  const [randomMessage, setRandomMessage] = useState<{
-    name: string
+type DataType = {
+  name: string
+  message: string
+  redirect?: {
+    url: string
     message: string
-  }>()
+  }
+}
+export const useBanner = () => {
+  const [randomMessage, setRandomMessage] = useState<DataType>()
   const [doesMatch, setDoesMatch] = useState<boolean>(false)
 
   useEffect(() => {
@@ -18,10 +23,14 @@ export const useBanner = () => {
       if (findMatch) {
         setDoesMatch(true)
         const randomMessage = getRandomItem<string>(findMatch.messages)
-        setRandomMessage({
+        const data: DataType = {
           name: findMatch.name,
           message: randomMessage
-        })
+        }
+        if (findMatch.redirect) {
+          data.redirect = findMatch.redirect
+        }
+        setRandomMessage(data)
       }
     })
   }, [])
